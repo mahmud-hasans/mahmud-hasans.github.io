@@ -1,0 +1,865 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mahmud Hasan Saikot</title>
+<meta name="description" content="Mahmud Hasan Saikot — PhD student in Mechanical Engineering (Robotics) at Colorado State University. Tensegrity, soft and bio-inspired robotics.">
+<meta property="og:title" content="Mahmud Hasan Saikot">
+<meta property="og:description" content="PhD student in Mechanical Engineering (Robotics), Colorado State University. Tensegrity, soft and bio-inspired robotics.">
+<meta property="og:image" content="https://mahmud-hasans.github.io/assets/photo.jpg">
+<meta property="og:url" content="https://mahmud-hasans.github.io/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://mahmud-hasans.github.io/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b1020'/%3E%3Cpath d='M9 8 L23 24 M23 8 L9 24 M16 6 L16 26' stroke='%23e2e8f0' stroke-width='2.6' stroke-linecap='round'/%3E%3Cpath d='M9 8 L23 8 L23 24 L9 24 Z M16 6 L23 8 M16 26 L9 24' stroke='%23818cf8' stroke-width='1' fill='none'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>
+  /* Night is the default; the toggle switches to day and remembers the choice. */
+  (function(){ var t = 'dark'; try { t = localStorage.getItem('theme') || 'dark'; } catch(e){} document.documentElement.dataset.theme = t; })();
+</script>
+<style>
+:root{
+  --bg:#ffffff; --bg-alt:#f6f7fb; --card:#ffffff; --text:#111827; --muted:#5b6474; --faint:#8b93a3;
+  --line:#e6e8ef; --accent:#4f46e5; --accent-2:#0891b2; --accent-soft:rgba(79,70,229,.08);
+  --shadow:0 1px 2px rgba(16,24,40,.04),0 4px 16px rgba(16,24,40,.05);
+  --mono:"JetBrains Mono",ui-monospace,monospace;
+  /* hero — light */
+  --hero-mode:light; --hero-bg:#f3f5fd; --hero-glow1:rgba(99,102,241,.16); --hero-glow2:rgba(8,145,178,.10);
+  --hero-dot:rgba(15,23,42,.08); --hero-text:#0f172a; --hero-sub:#475569; --hero-faint:rgba(15,23,42,.45);
+  --hero-border:rgba(15,23,42,.14); --hero-hover:rgba(15,23,42,.05); --hero-kicker:#4f46e5; --hero-kdot:#0891b2;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0d1117; --bg-alt:#111722; --card:#151b26; --text:#e6e9ef; --muted:#9aa3b2; --faint:#6b7383;
+  --line:#242b38; --accent:#8b93ff; --accent-2:#22d3ee; --accent-soft:rgba(139,147,255,.10);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25);
+  --hero-mode:dark; --hero-bg:#0b1020; --hero-glow1:rgba(99,102,241,.22); --hero-glow2:rgba(34,211,238,.10);
+  --hero-dot:rgba(255,255,255,.07); --hero-text:#ffffff; --hero-sub:#b6bdcc; --hero-faint:rgba(232,235,244,.45);
+  --hero-border:rgba(255,255,255,.16); --hero-hover:rgba(255,255,255,.06); --hero-kicker:#a5b4fc; --hero-kdot:#22d3ee;
+}}
+:root[data-theme="dark"]{
+  --bg:#0d1117; --bg-alt:#111722; --card:#151b26; --text:#e6e9ef; --muted:#9aa3b2; --faint:#6b7383;
+  --line:#242b38; --accent:#8b93ff; --accent-2:#22d3ee; --accent-soft:rgba(139,147,255,.10);
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25);
+  --hero-mode:dark; --hero-bg:#0b1020; --hero-glow1:rgba(99,102,241,.22); --hero-glow2:rgba(34,211,238,.10);
+  --hero-dot:rgba(255,255,255,.07); --hero-text:#ffffff; --hero-sub:#b6bdcc; --hero-faint:rgba(232,235,244,.45);
+  --hero-border:rgba(255,255,255,.16); --hero-hover:rgba(255,255,255,.06); --hero-kicker:#a5b4fc; --hero-kdot:#22d3ee;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+/* Fluid type: everything sized in rem scales with the screen */
+html{scroll-behavior:smooth;scroll-padding-top:64px;font-size:clamp(14.5px, 13.4px + 0.32vw, 18.5px)}
+body{background:var(--bg);color:var(--text);font:1rem/1.65 "Inter",system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{width:100%;max-width:clamp(320px, 88vw, 1280px);margin:0 auto;padding:0 clamp(16px,3.5vw,32px)}
+
+/* ---------- Nav ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .25s,border-color .25s;border-bottom:1px solid transparent}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:clamp(54px,4.5vw,66px);gap:12px}
+nav .name{font-weight:600;color:var(--hero-text);white-space:nowrap;letter-spacing:-.01em}
+nav ul{list-style:none;display:flex;gap:clamp(14px,2vw,28px);font-size:.92rem;align-items:center}
+nav ul a{color:var(--hero-sub)}
+nav ul a:hover,nav ul a.active{color:var(--hero-text);text-decoration:none}
+nav button{background:none;border:0;color:var(--hero-sub);cursor:pointer;padding:6px;display:grid;place-items:center;border-radius:8px}
+nav button:hover{color:var(--hero-text);background:var(--hero-hover)}
+nav.solid{background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);border-color:var(--line)}
+nav.solid .name{color:var(--text)}
+nav.solid ul a,nav.solid button{color:var(--muted)}
+nav.solid ul a:hover,nav.solid ul a.active{color:var(--text)}
+nav.solid button:hover{background:var(--bg-alt);color:var(--text)}
+#menuBtn{display:none}
+@media (max-width:760px){
+  #menuBtn{display:grid}
+  nav ul .navlink{display:none}
+  nav ul.open{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:6px 0}
+  nav ul.open .navlink{display:block}
+  nav ul.open .navlink a{display:block;padding:12px 24px;color:var(--text)}
+  nav ul.open li.ctl{display:none}
+}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;min-height:min(94vh,900px);background:
+  radial-gradient(60vw 36vw at 76% 45%,var(--hero-glow1),transparent 60%),
+  radial-gradient(40vw 28vw at 8% 100%,var(--hero-glow2),transparent 60%),
+  var(--hero-bg);color:var(--hero-text);overflow:hidden;display:flex;align-items:center;transition:background-color .3s}
+.hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(var(--hero-dot) 1px,transparent 1px);background-size:26px 26px;mask-image:linear-gradient(180deg,#000 60%,transparent);pointer-events:none}
+.stage{position:absolute;top:0;bottom:0;right:0;width:52%}
+#tensegrity{position:absolute;inset:0;width:100%;height:100%;cursor:grab;touch-action:pan-y}
+#tensegrity:active{cursor:grabbing}
+.stage-foot{position:absolute;left:0;right:0;bottom:17%;display:flex;justify-content:center;z-index:3}
+.robot-btn{display:inline-flex;align-items:center;gap:.55em;padding:.62em 1.1em;border-radius:999px;font-size:.92rem;font-weight:500;color:var(--hero-text);border:1px solid var(--hero-border);background:color-mix(in srgb,var(--hero-bg) 70%,transparent);backdrop-filter:blur(6px);transition:transform .15s,border-color .15s,box-shadow .15s}
+.robot-btn:hover{text-decoration:none;transform:translateY(-2px);border-color:var(--hero-kicker);box-shadow:0 8px 28px var(--hero-glow1)}
+.robot-btn svg{width:1.05em;height:1.05em;color:var(--hero-kdot)}
+.fig-label{position:absolute;right:clamp(16px,3vw,32px);bottom:clamp(14px,2.4vw,26px);z-index:3;font-family:var(--mono);font-size:.7rem;color:var(--hero-faint);text-align:right;line-height:1.7;pointer-events:none}
+.hero .wrap{position:relative;z-index:2;pointer-events:none}
+.hero-text{width:50%;padding:clamp(96px,10vw,140px) 0 clamp(80px,8vw,120px);pointer-events:auto}
+.kicker{font-family:var(--mono);font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--hero-kicker);display:inline-flex;align-items:center;gap:10px}
+.kicker i{width:6px;height:6px;border-radius:50%;background:var(--hero-kdot);box-shadow:0 0 10px var(--hero-kdot)}
+.hero h1{white-space:nowrap;font-size:clamp(28px,4.4vw,76px);line-height:1.05;letter-spacing:-.03em;font-weight:700;margin:.45em 0 .3em;color:var(--hero-text)}
+.hero p.sub{font-size:1.12rem;color:var(--hero-sub);max-width:30em}
+.hero .btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:1.9rem}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:.7em 1.15em;border-radius:10px;font-weight:500;font-size:.94rem;transition:transform .15s,background .15s,border-color .15s}
+.btn:hover{text-decoration:none;transform:translateY(-1px)}
+.btn.primary{background:#6366f1;color:#fff;box-shadow:0 6px 24px rgba(99,102,241,.3)}
+.btn.primary:hover{background:#7477f5}
+.btn.ghost{color:var(--hero-text);border:1px solid var(--hero-border);background:var(--hero-hover)}
+.btn.ghost:hover{border-color:var(--hero-kicker)}
+.icons{display:flex;gap:6px;margin-top:1.6rem}
+.icons a{width:2.4rem;height:2.4rem;border-radius:10px;display:grid;place-items:center;color:var(--hero-sub);border:1px solid var(--hero-border);transition:.15s}
+.icons a:hover{color:var(--hero-text);border-color:var(--hero-kicker);background:var(--hero-hover);text-decoration:none}
+.icons svg{width:1.1rem;height:1.1rem}
+.scroll-cue{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);z-index:2;width:22px;height:34px;border:1.5px solid var(--hero-border);border-radius:12px}
+.scroll-cue::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;margin-left:-1.5px;border-radius:2px;background:var(--hero-sub);animation:cue 1.8s infinite}
+@keyframes cue{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(10px)}}
+@media (max-width:860px){
+  .hero{flex-direction:column;align-items:stretch;min-height:0}
+  .hero-text{width:100%;padding:96px 0 0}
+  .hero h1{font-size:clamp(24px,8.2vw,64px)}
+  .stage{position:relative;order:2;width:100%;height:min(110vw,480px);right:auto}
+  .stage-foot{bottom:14%}
+  .fig-label{left:0;right:0;text-align:center;bottom:4%}
+  .kicker{font-size:.7rem;letter-spacing:.05em}
+  .scroll-cue{display:none}
+}
+
+/* ---------- Sections ---------- */
+section{padding:clamp(36px,4vw,60px) 0;position:relative}
+section.alt{background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.sec-head{margin-bottom:clamp(16px,1.8vw,24px)}
+.eyebrow{font-family:var(--mono);font-size:0.7812rem;color:var(--accent);letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;gap:10px}
+.eyebrow::after{content:"";height:1px;width:48px;background:linear-gradient(90deg,var(--accent),transparent)}
+h2{font-size:clamp(26px,3.4vw,34px);font-weight:700;letter-spacing:-.02em;line-height:1.2;margin-top:8px}
+.sec-head p{color:var(--muted);margin-top:8px;max-width:40em}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow)}
+
+/* About */
+.about{display:grid;grid-template-columns:clamp(200px,24vw,300px) 1fr;gap:48px;align-items:start}
+.photo{position:relative}
+.photo img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:20px;border:1px solid var(--line);box-shadow:var(--shadow)}
+.photo::before{content:"";position:absolute;inset:14px -14px -14px 14px;border-radius:20px;border:1.5px solid var(--accent);opacity:.35;z-index:-1}
+.about p{margin-bottom:14px;color:var(--text);text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+.about p.muted{color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.tag{font-size:0.8125rem;padding:4px 11px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:500}
+@media (max-width:760px){.about{grid-template-columns:1fr;gap:28px}.photo{max-width:220px}}
+
+/* News */
+.news{padding:8px 28px}
+.news li{list-style:none;display:grid;grid-template-columns:100px 1fr;gap:16px;padding:14px 0;border-bottom:1px dashed var(--line);position:relative}
+.news li:last-child{border-bottom:0}
+.news .d{font-family:var(--mono);font-size:0.8125rem;color:var(--accent);padding-top:2px}
+.news .new{font-size:0.6875rem;font-weight:600;background:#22c55e;color:#fff;padding:1px 7px;border-radius:999px;margin-left:8px;vertical-align:2px}
+@media (max-width:540px){.news{padding:4px 18px}.news li{grid-template-columns:1fr;gap:2px}}
+
+/* Research */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,13.5rem),1fr));gap:14px}
+.proj{padding:16px 18px;display:flex;flex-direction:column;gap:5px;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s}
+.proj::before{content:"";position:absolute;left:0;top:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-2));opacity:.85}
+.proj.past::before{background:var(--line)}
+.proj:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--accent) 40%,var(--line))}
+.proj .top{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.status{font-size:0.75rem;font-weight:600;padding:2px 9px;border-radius:999px}
+.status.cur{background:rgba(34,197,94,.12);color:#16a34a}
+.status.done{background:var(--bg-alt);color:var(--muted);border:1px solid var(--line)}
+.proj .fund{font-family:var(--mono);font-size:0.7188rem;color:var(--faint)}
+.proj h3{font-size:1rem;font-weight:600;letter-spacing:-.01em;margin-top:2px;line-height:1.35}
+.proj p{font-size:0.84rem;color:var(--muted);line-height:1.5}
+.proj .pubs-ref{margin-top:auto;padding-top:8px;font-size:0.8125rem;color:var(--faint)}
+
+/* Publications */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.filters button{font:inherit;font-size:0.875rem;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--muted);cursor:pointer;transition:.15s}
+.filters button:hover{color:var(--text)}
+.filters button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.filters .count{opacity:.7;margin-left:4px;font-size:0.75rem}
+.publist{display:grid;gap:12px}
+.pub{padding:18px 22px;display:grid;grid-template-columns:1fr auto;gap:18px;transition:border-color .2s,transform .2s}
+.pub:hover{border-color:color-mix(in srgb,var(--accent) 40%,var(--line))}
+.pub .t{display:inline;font-weight:600;line-height:1.4;color:var(--text)}
+a.t:hover{color:var(--accent);text-decoration:none}
+.pub .ext svg{width:.8em;height:.8em;margin-left:.3em;vertical-align:.05em;opacity:.45}
+a.t:hover .ext svg{opacity:1}
+.pub .a{font-size:0.9062rem;color:var(--muted);margin-top:4px}
+.pub .a b{color:var(--text);font-weight:600}
+.pub .v{font-size:0.9062rem;margin-top:2px}
+.pub .v i{color:var(--text)}
+.pub .l{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.pub .l a,.pub .l button{display:inline-flex;align-items:center;gap:5px;font:inherit;font-size:0.78rem;font-weight:500;padding:4px 11px;border-radius:7px;border:1px solid var(--line);background:var(--card);color:var(--text);cursor:pointer;transition:.15s}
+.pub .l svg{width:.95em;height:.95em}
+.pub .l a.play{background:#6366f1;border-color:#6366f1;color:#fff}
+.pub .l a.play:hover{background:#7477f5;border-color:#7477f5;color:#fff}
+.pub .l a:hover,.pub .l button:hover{border-color:var(--accent);color:var(--accent);text-decoration:none}
+.cite-dlg{margin:auto;width:min(680px,92vw);border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--text);padding:0;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.cite-dlg::backdrop{background:rgba(10,14,28,.45);backdrop-filter:blur(2px)}
+.cite-head{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line)}
+.cite-head button{background:none;border:0;color:var(--muted);cursor:pointer;font-size:1rem;padding:4px 8px;border-radius:6px}
+.cite-head button:hover{background:var(--bg-alt);color:var(--text)}
+.cite-dlg pre{margin:0;padding:16px 18px;font-family:var(--mono);font-size:.78rem;line-height:1.6;white-space:pre-wrap;word-break:break-word;background:var(--bg-alt);max-height:60vh;overflow:auto}
+.cite-foot{display:flex;justify-content:flex-end;padding:12px 18px;border-top:1px solid var(--line)}
+.cite-foot .btn{border:0;cursor:pointer;font:inherit;font-size:.9rem}
+.pub .side{display:flex;flex-direction:column;align-items:flex-end;gap:8px;font-family:var(--mono);font-size:0.8125rem;color:var(--faint);white-space:nowrap}
+.type{font-family:"Inter",sans-serif;font-size:0.7188rem;font-weight:600;padding:2px 9px;border-radius:999px}
+.type.journal{background:rgba(79,70,229,.10);color:var(--accent)}
+.type.conference{background:rgba(8,145,178,.12);color:var(--accent-2)}
+.type.talk{background:rgba(234,88,12,.12);color:#ea580c}
+.pub.feat{border-color:color-mix(in srgb,var(--accent) 45%,var(--line));background:linear-gradient(135deg,var(--accent-soft),transparent 60%),var(--card)}
+.pub.feat .star{font-size:0.75rem;font-weight:600;color:var(--accent);margin-bottom:6px;display:flex;align-items:center;gap:6px}
+@media (max-width:600px){.pub{grid-template-columns:1fr;gap:6px;padding:16px}.pub .side{flex-direction:row;align-items:center;order:-1}}
+
+/* Timeline */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.cols > .card{padding:28px}
+.cols h3{font-size:0.9375rem;font-weight:600;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.cols h3 i{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);font-style:normal}
+.tl{position:relative;padding-left:22px}
+.tl::before{content:"";position:absolute;left:5px;top:8px;bottom:8px;width:2px;background:var(--line);border-radius:2px}
+.tl-item{position:relative;padding-bottom:22px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{content:"";position:absolute;left:-22px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--card);border:2px solid var(--faint)}
+.tl-item.now::before{border-color:var(--accent);background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.tl-item b{display:block;font-weight:600}
+.tl-item .m{font-size:0.9062rem;color:var(--muted)}
+.tl-item .d{font-family:var(--mono);font-size:0.75rem;color:var(--faint)}
+@media (max-width:760px){.cols{grid-template-columns:1fr}.cols > .card{padding:22px}}
+
+/* Awards / skills */
+.awards li{list-style:none;display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:12px 0;border-bottom:1px dashed var(--line)}
+.awards li:last-child{border-bottom:0}
+.awards .ic{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;background:rgba(234,179,8,.14);color:#ca8a04}
+.awards .ic svg{width:16px;height:16px}
+.awards span{display:block;font-size:0.8438rem;color:var(--muted)}
+.awards em{font-style:normal;font-family:var(--mono);font-size:0.7812rem;color:var(--faint);text-align:right;white-space:nowrap}
+.skills div{padding:10px 0;border-bottom:1px dashed var(--line)}
+.skills div:last-child{border-bottom:0}
+.skills dt{font-size:0.8125rem;font-weight:600;color:var(--muted);margin-bottom:6px}
+.skills dd{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:0.8125rem;padding:3px 10px;border-radius:7px;background:var(--bg-alt);border:1px solid var(--line)}
+
+/* Contact / footer */
+.contact{background:var(--hero-bg);color:var(--hero-text);border-top:1px solid var(--line);padding:clamp(40px,4.5vw,60px) 0 24px;position:relative;overflow:hidden}
+.contact::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 300px at 85% 0%,var(--hero-glow1),transparent 60%);pointer-events:none}
+.contact .wrap{position:relative}
+.contact h2{color:var(--hero-text)}
+.contact .eyebrow{color:var(--hero-kicker)}.contact .eyebrow::after{background:linear-gradient(90deg,var(--hero-kicker),transparent)}
+.contact p{color:var(--hero-sub);margin:10px 0 24px;max-width:34em}
+.contact .mail{font-size:clamp(20px,3vw,28px);font-weight:600;color:var(--hero-text);border-bottom:2px solid #6366f1}
+.contact .mail:hover{text-decoration:none;color:var(--hero-kicker)}
+.foot{margin-top:36px;padding-top:20px;border-top:1px solid var(--hero-border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:0.8125rem;color:var(--hero-faint)}
+.foot a{color:var(--hero-sub)}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}.scroll-cue::after{animation:none}}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap">
+    <a class="name" href="#top">Mahmud Hasan Saikot</a>
+    <ul id="menu">
+      <li class="navlink"><a href="#about">About</a></li>
+      <li class="navlink"><a href="#research">Research</a></li>
+      <li class="navlink"><a href="#publications">Publications</a></li>
+      <li class="navlink"><a href="#experience">Experience</a></li>
+      <li class="navlink"><a href="assets/Mahmud_Hasan_Saikot_CV.pdf" target="_blank" rel="noopener">CV</a></li>
+      <li class="ctl"><button id="theme" aria-label="Toggle dark mode" title="Toggle theme"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></li>
+      <li class="ctl"><button id="menuBtn" aria-label="Menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero" id="top">
+  <div class="stage">
+    <canvas id="tensegrity" aria-label="Animated 6-bar icosahedron tensegrity"></canvas>
+    <div class="stage-foot">
+      <a class="robot-btn" id="robotLink" href="#" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 19 19 5M5 5l14 14M12 3v18"/><circle cx="5" cy="5" r="1.6"/><circle cx="19" cy="19" r="1.6"/><circle cx="19" cy="5" r="1.6"/><circle cx="5" cy="19" r="1.6"/></svg>
+        Meet a cool robot
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>
+      </a>
+    </div>
+    <div class="fig-label">icosahedron tensegrity<br>drag to spin</div>
+  </div>
+  <div class="wrap">
+    <div class="hero-text">
+      <span class="kicker"><i></i>Robotics · Tensegrity · Bio-inspired</span>
+      <h1 id="heroName">Mahmud Hasan Saikot</h1>
+      <p class="sub">PhD student in Mechanical Engineering at Colorado State University, building tensegrity robots that adapt their bodies to the task.</p>
+      <div class="btns">
+        <a class="btn primary" href="#publications">View publications
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn ghost" href="assets/Mahmud_Hasan_Saikot_CV.pdf" target="_blank" rel="noopener">Download CV</a>
+      </div>
+      <div class="icons">
+        <a href="mailto:saikath65@gmail.com" title="Email" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></a>
+        <a href="https://scholar.google.com/citations?user=Pryff28AAAAJ&hl=en" target="_blank" rel="noopener" title="Google Scholar" aria-label="Google Scholar"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3 1 9.5l4 2.4V17c2 2.2 4.4 3 7 3s5-.8 7-3v-5.1l2-1.2V16h2V9.5L12 3Zm0 2.3 7.6 4.2L12 13.8 4.4 9.5 12 5.3ZM7 13.1l5 2.9 5-2.9v3.1c-1.4 1.3-3 1.8-5 1.8s-3.6-.5-5-1.8v-3.1Z"/></svg></a>
+        <a href="https://github.com/mahmud-hasans" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.4 1.1 2.9.8.1-.6.4-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7-.1-.2-.4-1.3.1-2.7 0 0 .8-.3 2.8 1a9.6 9.6 0 0 1 5 0c1.9-1.3 2.8-1 2.8-1 .5 1.4.2 2.5.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.9V21c0 .3.2.6.7.5A10 10 0 0 0 12 2Z"/></svg></a>
+        <a href="https://www.linkedin.com/in/mah-san/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4V21H3V9.5Zm7 0h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.2 0-2.8-1.7-2.8-1.8 0-2 1.3-2 2.7V21h-4V9.5Z"/></svg></a>
+        <a href="https://orcid.org/0000-0003-1874-5062" target="_blank" rel="noopener" title="ORCID" aria-label="ORCID"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20ZM8.3 17.2H6.6V9.4h1.7v7.8ZM7.4 8.3a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm3 8.9V9.4h3.6c3.4 0 4.6 2.4 4.6 3.9 0 2.1-1.5 3.9-4.5 3.9h-3.7Zm1.7-1.5h1.8c2.6 0 3-1.9 3-2.4 0-1-.6-2.4-3-2.4h-1.8v4.8Z"/></svg></a>
+      </div>
+    </div>
+  </div>
+  <a class="scroll-cue" href="#about" aria-label="Scroll to content"></a>
+</header>
+
+<main>
+
+<!-- ===================== ABOUT ===================== -->
+<section id="about">
+  <div class="wrap">
+    <div class="about reveal">
+      <div class="photo"><img src="assets/photo.jpg" alt="Mahmud Hasan Saikot"></div>
+      <div>
+        <div class="eyebrow">About</div>
+        <h2>Hi, I’m Mahmud.</h2>
+        <p style="margin-top:16px">I’m a PhD student in the Adaptive Robotics Lab at <b>Colorado State University</b>, advised by <a href="mailto:Jianguo.Zhao@colostate.edu">Dr. Jianguo Zhao</a>. I completed my M.S. at CSU and my B.Sc. in Mechanical Engineering at BUET.</p>
+        <p class="muted">My research focuses on <b style="color:var(--text)">tensegrity robots</b> — structures of rigid struts held in balance by elastic cables — and how their morphology can adapt for locomotion, manipulation and cooperation. I currently work on a tensegrity robotic fish and a modular tensegrity worm, both supported by NSF. Before grad school I modeled geothermal systems for an EU-funded project in the UK.</p>
+        <div class="tags">
+          <span class="tag">Tensegrity robots</span><span class="tag">Bio-inspired locomotion</span><span class="tag">Aerial perching</span><span class="tag">Soft sensing</span><span class="tag">Haptics</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== NEWS ===================== -->
+<section id="news" class="alt">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="eyebrow">News</div><h2>Recent updates</h2></div>
+    <ul class="card news reveal">
+      <li><span class="d">2026</span><span>Our TeCoBot paper received the <b>Best Paper Award</b> at the <a href="https://modular-robot-workshop.github.io/iros2026-modular-robot-workshop-site/" target="_blank" rel="noopener">IROS 2026 Modular Robot Workshop</a>.<span class="new">NEW</span></span></li>
+      <li><span class="d">2026</span><span>Our paper on <a id="nmiNews" href="https://arxiv.org/abs/2608.27221" target="_blank" rel="noopener">tensegrity continuum robots</a> (TeCoBots) was accepted to <i>Nature Machine Intelligence</i>.</span></li>
+      <li><span class="d">2026</span><span>Received the Sam L. Clowney Research Scholarship.</span></li>
+      <li><span class="d">2026</span><span>Presented our tensegrity robotic fish work at the APS Global Physics Summit.</span></li>
+      <li><span class="d">2026</span><span>Hybrid perching mechanism paper published in <i>IEEE Robotics and Automation Letters</i>.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===================== RESEARCH ===================== -->
+<section id="research">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="eyebrow">Research</div><h2>Projects</h2></div>
+    <div class="grid reveal">
+      <article class="card proj"><div class="top"><span class="status cur">Current</span><span class="fund">NSF</span></div><h3>Tensegrity Robotic Fish</h3><p>Compliant body for efficient swimming.</p></article>
+      <article class="card proj"><div class="top"><span class="status cur">Current</span></div><h3>Tensegrity Worm Robot</h3><p>Modular, self-reconfigurable crawler.</p></article>
+      <article class="card proj past"><div class="top"><span class="status done">Completed</span><span class="fund">NSF</span></div><h3>Aerial Perching</h3><p>Robust landing on tilted surfaces.</p></article>
+      <article class="card proj past"><div class="top"><span class="status done">Completed</span></div><h3>Soft Underwater Sensor</h3><p>Waterproof directional force sensing.</p></article>
+      <article class="card proj past"><div class="top"><span class="status done">Completed</span></div><h3>Adjustable Braille Display</h3><p>Cell size adapts to the learner.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PUBLICATIONS ===================== -->
+<section id="publications" class="alt">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="eyebrow">Publications</div><h2>Papers &amp; presentations</h2><p>Full list on <a href="https://scholar.google.com/citations?user=Pryff28AAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.</p></div>
+    <div class="filters reveal" id="filters"></div>
+    <div class="publist reveal" id="pubs"></div>
+  </div>
+</section>
+
+<!-- ===================== EXPERIENCE ===================== -->
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="eyebrow">Experience</div><h2>Work &amp; education</h2></div>
+    <div class="cols reveal">
+      <div class="card">
+        <h3><i><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></i>Experience</h3>
+        <div class="tl">
+          <div class="tl-item now"><span class="d">Aug 2024 — Present</span><b>Research Assistant</b><div class="m">Adaptive Robotics Lab, Colorado State University</div></div>
+          <div class="tl-item"><span class="d">Aug 2023 — Aug 2024</span><b>Graduate Teaching Assistant</b><div class="m">Mechanical Engineering, Colorado State University</div></div>
+          <div class="tl-item"><span class="d">Jan 2022 — Jul 2023</span><b>Assistant Mechanical Engineer</b><div class="m">Technovative Solutions, UK · EU GeoSmart project</div></div>
+          <div class="tl-item"><span class="d">Mar 2021 — Nov 2021</span><b>Technical Writer</b><div class="m">ByteXD · networking &amp; Linux</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <h3><i><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 9l10-5 10 5-10 5L2 9Z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg></i>Education</h3>
+        <div class="tl">
+          <div class="tl-item now"><span class="d">2026 — Present</span><b>Ph.D., Mechanical Engineering (Robotics)</b><div class="m">Colorado State University</div></div>
+          <div class="tl-item"><span class="d">2023 — 2026</span><b>M.S., Mechanical Engineering (Robotics)</b><div class="m">Colorado State University · GPA 4.0/4.0</div></div>
+          <div class="tl-item"><span class="d">2016 — 2021</span><b>B.Sc., Mechanical Engineering</b><div class="m">Bangladesh University of Engineering and Technology</div></div>
+        </div>
+        <h3 style="margin-top:28px"><i><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg></i>Service</h3>
+        <div class="tl">
+          <div class="tl-item"><span class="d">2026</span><b>Sports Coordinator</b><div class="m">Bangladeshi Students Association, CSU</div></div>
+          <div class="tl-item"><span class="d">2020 — 2026</span><b>Co-founder, Tero Foundation</b><div class="m">300 face shields for health workers during COVID-19</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== AWARDS & SKILLS ===================== -->
+<section id="awards" class="alt">
+  <div class="wrap">
+    <div class="sec-head reveal"><div class="eyebrow">Recognition &amp; toolkit</div><h2>Awards &amp; skills</h2></div>
+    <div class="cols reveal">
+      <div class="card">
+        <ul class="awards" id="awardList"></ul>
+      </div>
+      <div class="card">
+        <dl class="skills">
+          <div><dt>Programming</dt><dd><span class="chip">Python</span><span class="chip">C/C++</span><span class="chip">MATLAB</span><span class="chip">HTML/CSS</span></dd></div>
+          <div><dt>Simulation</dt><dd><span class="chip">MuJoCo</span><span class="chip">ANSYS Fluent</span><span class="chip">ANSYS Mechanical</span><span class="chip">Abaqus</span><span class="chip">Pointwise</span></dd></div>
+          <div><dt>Design</dt><dd><span class="chip">SolidWorks</span><span class="chip">AutoCAD</span><span class="chip">Inkscape</span><span class="chip">Figma</span></dd></div>
+          <div><dt>Hardware</dt><dd><span class="chip">PCBs</span><span class="chip">Arduino</span><span class="chip">Raspberry Pi</span><span class="chip">ESP32</span></dd></div>
+          <div><dt>Methods</dt><dd><span class="chip">Machine learning</span><span class="chip">OpenCV</span><span class="chip">CFD</span><span class="chip">FEA</span><span class="chip">Azure</span></dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== CONTACT ===================== -->
+<footer class="contact" id="contact">
+  <div class="wrap">
+    <div class="eyebrow">Contact</div>
+    <h2>Let’s talk robots.</h2>
+    <p>Open to collaborations and conversations about tensegrity, soft and bio-inspired robotics.</p>
+    <a class="mail" href="mailto:saikath65@gmail.com">saikath65@gmail.com</a>
+    <div class="foot">
+      <span>© <span id="yr"></span> Mahmud Hasan Saikot · Fort Collins, Colorado</span>
+      <span><a href="https://github.com/mahmud-hasans" target="_blank" rel="noopener">GitHub</a> · <a href="https://scholar.google.com/citations?user=Pryff28AAAAJ&hl=en" target="_blank" rel="noopener">Scholar</a> · <a href="https://www.linkedin.com/in/mah-san/" target="_blank" rel="noopener">LinkedIn</a></span>
+    </div>
+  </div>
+</footer>
+
+<dialog id="citeDlg" class="cite-dlg" aria-label="Citation">
+  <div class="cite-head"><b>Cite this work</b><button type="button" id="citeClose" aria-label="Close">✕</button></div>
+  <pre id="citeTxt"></pre>
+  <div class="cite-foot"><button type="button" id="citeCopy" class="btn primary">Copy BibTeX</button></div>
+</dialog>
+
+<script>
+/* ===== TeCoBot site links (live once tecobot.github.io is published) ===== */
+const TECOBOT_URL  = "https://tecobot.github.io/";        // hero: "Meet a cool robot"
+const TECOBOT_PLAY = "https://tecobot.github.io/play/";   // NMI card: "Play with TeCoBots"
+
+/* ===== Publications: edit this list to update the site =====
+   type:  "journal" | "conference" | "talk"
+   link:  where the title points (DOI page, arXiv, publisher)  — falls back to a Google Scholar search
+   pdf:   PDF link (shows a PDF button). A file in assets/papers/ works too, e.g. "assets/papers/aisy2025.pdf"
+   code:  optional code link
+   bib:   BibTeX used by the Cite button
+   arxiv: optional arXiv link (shows an arXiv button)
+   NMI: when the Nature link is live, replace `link`, `pdf` and the bib entry of the first item (keep `arxiv`) —
+        the News item updates automatically.                                                        */
+const PUBS = [
+  {type:"journal", feat:true, year:"2026",
+   title:"Tensegrity Continuum Robots Enable Task-Adaptive Morphologies for Cooperative Behaviors",
+   authors:"MH Saikot, S Spiegel, SA Kariyawasam, A Stefka, J Chrisler, J Zhao",
+   venue:"Nature Machine Intelligence (accepted) · arXiv:2608.27221",
+   link:"https://arxiv.org/abs/2608.27221", pdf:"assets/papers/saikot2026_tecobot_arxiv.pdf",
+   arxiv:"https://arxiv.org/abs/2608.27221",
+   code:"https://github.com/mahmud-hasans/TeCoBot", play:true,
+   bib:`@article{saikot2026tensegrity,
+  title   = {Tensegrity Continuum Robots Enable Task-Adaptive Morphologies for Cooperative Behaviors},
+  author  = {Saikot, Mahmud Hasan and Spiegel, S. and Kariyawasam, S. A. and Stefka, A. and Chrisler, J. and Zhao, Jianguo},
+  journal = {arXiv preprint arXiv:2608.27221},
+  note    = {Accepted for publication in Nature Machine Intelligence},
+  year    = {2026}
+}`},
+  {type:"journal", year:"2026",
+   title:"A Hybrid Perching Mechanism for Aerial Robots: Branch and Surface Perching Robust to Large Surface Orientation Misalignment",
+   authors:"SA Kariyawasam, MH Saikot, B Cheng, J Zhao", venue:"IEEE Robotics and Automation Letters",
+   link:"https://ieeexplore.ieee.org/document/11495169", pdf:"assets/papers/kariyawasam2026_ral.pdf",
+   bib:`@article{kariyawasam2026hybrid,
+  title   = {A Hybrid Perching Mechanism for Aerial Robots: Branch and Surface Perching Robust to Large Surface Orientation Misalignment},
+  author  = {Kariyawasam, Sudheera Akalanka and Saikot, Mahmud Hasan and Cheng, Bo and Zhao, Jianguo},
+  journal = {IEEE Robotics and Automation Letters},
+  year    = {2026},
+  url     = {https://ieeexplore.ieee.org/document/11495169}
+}`},
+  {type:"journal", year:"2025",
+   title:"Tunable Mechanism Enables Robust Surface Perching Under Different Landing Impacts and Orientation Misalignment",
+   authors:"MH Saikot, F Wu, E Lerner, B Cheng, J Zhao", venue:"Advanced Intelligent Systems, 7(7), 2500107",
+   link:"https://doi.org/10.1002/aisy.202500107", pdf:"assets/papers/saikot2025_aisy.pdf",
+   bib:`@article{saikot2025tunable,
+  title   = {Tunable Mechanism Enables Robust Surface Perching Under Different Landing Impacts and Orientation Misalignment},
+  author  = {Saikot, Mahmud Hasan and Wu, Feiyu and Lerner, Elisha and Cheng, Bo and Zhao, Jianguo},
+  journal = {Advanced Intelligent Systems},
+  volume  = {7},
+  number  = {7},
+  pages   = {2500107},
+  year    = {2025},
+  doi     = {10.1002/aisy.202500107}
+}`},
+  {type:"conference", year:"2024",
+   title:"Bistable Spring Steel Grippers for Passive Grasping",
+   authors:"B Jones, MH Saikot, J Zhao", venue:"IEEE Int. Conf. on Soft Robotics (RoboSoft), pp. 906–911",
+   link:"https://par.nsf.gov/biblio/10522928", pdf:"assets/papers/jones2024_robosoft.pdf",
+   bib:`@inproceedings{jones2024bistable,
+  title     = {Bistable Spring Steel Grippers for Passive Grasping},
+  author    = {Jones, B. and Saikot, Mahmud Hasan and Zhao, Jianguo},
+  booktitle = {2024 IEEE 7th International Conference on Soft Robotics (RoboSoft)},
+  address   = {San Diego, CA, USA},
+  pages     = {906--911},
+  year      = {2024}
+}`},
+  {type:"journal", year:"2023",
+   title:"Deep Learning-based Approach to R-134a Bubble Detection and Analysis for Geothermal Applications",
+   authors:"M Ahmed, A Habib, MM Nawal, MMH Saikot, MAH Chowdhury, A Hoque, AU Zaman, H Pálsson, P Björnsson",
+   venue:"Case Studies in Thermal Engineering, 49, 103377",
+   link:"https://doi.org/10.1016/j.csite.2023.103377", pdf:"assets/papers/ahmed2023_csite.pdf",
+   bib:`@article{ahmed2023deep,
+  title   = {Deep Learning-based Approach to R-134a Bubble Detection and Analysis for Geothermal Applications},
+  author  = {Ahmed, M. and Habib, A. and Nawal, M. M. and Saikot, Mahmud Hasan and Chowdhury, M. A. H. and Hoque, A. and Zaman, A. U. and P{\'a}lsson, H. and Bj{\"o}rnsson, P.},
+  journal = {Case Studies in Thermal Engineering},
+  volume  = {49},
+  pages   = {103377},
+  year    = {2023},
+  doi     = {10.1016/j.csite.2023.103377}
+}`},
+  {type:"journal", year:"2023",
+   title:"Savonius Wind Turbine Performance Comparison with One and Two Porous Deflectors: A CFD Study",
+   authors:"MMH Saikot, M Rahman, MA Hosen, W Ajwad, MF Jamil, MQ Islam", venue:"Flow, Turbulence and Combustion, 111, 1227–1251",
+   link:"https://doi.org/10.1007/s10494-023-00459-6", pdf:"assets/papers/saikot2023_savonius_preprint.pdf",
+   bib:`@article{saikot2023savonius,
+  title   = {Savonius Wind Turbine Performance Comparison with One and Two Porous Deflectors: A CFD Study},
+  author  = {Saikot, Mahmud Hasan and Rahman, M. and Hosen, M. A. and Ajwad, W. and Jamil, M. F. and Islam, M. Q.},
+  journal = {Flow, Turbulence and Combustion},
+  volume  = {111},
+  pages   = {1227--1251},
+  year    = {2023},
+  doi     = {10.1007/s10494-023-00459-6}
+}`},
+  {type:"conference", year:"2023",
+   title:"Machine Learning Based Characterization of a Waterproofed Soft Multi-directional Force Sensor",
+   authors:"MMH Saikot, RASI Subad, K Park", venue:"IEEE Int. Conf. on Flexible and Printable Sensors and Systems (FLEPS), Boston",
+   link:"https://ieeexplore.ieee.org/document/10220405", pdf:"assets/papers/saikot2023_fleps.pdf",
+   bib:`@inproceedings{saikot2023machine,
+  title     = {Machine Learning Based Characterization of a Waterproofed Soft Multi-directional Force Sensor},
+  author    = {Saikot, Mahmud Hasan and Subad, Rafsan Al Shafatul Islam and Park, Kihan},
+  booktitle = {2023 IEEE International Conference on Flexible and Printable Sensors and Systems (FLEPS)},
+  address   = {Boston, MA, USA},
+  year      = {2023},
+  url       = {https://ieeexplore.ieee.org/document/10220405}
+}`},
+  {type:"journal", year:"2022",
+   title:"Waterproof Design of Soft Multi-Directional Force Sensor for Underwater Robotic Applications",
+   authors:"LB Cross, RASI Subad, MMH Saikot, K Park", venue:"Applied Mechanics, 3(3), 705–723",
+   link:"https://doi.org/10.3390/applmech3030042", pdf:"assets/papers/cross2022_applmech.pdf",
+   bib:`@article{cross2022waterproof,
+  title   = {Waterproof Design of Soft Multi-Directional Force Sensor for Underwater Robotic Applications},
+  author  = {Cross, Liam B. and Subad, Rafsan Al Shafatul Islam and Saikot, Mahmud Hasan and Park, Kihan},
+  journal = {Applied Mechanics},
+  volume  = {3},
+  number  = {3},
+  pages   = {705--723},
+  year    = {2022},
+  doi     = {10.3390/applmech3030042}
+}`},
+  {type:"journal", year:"2022",
+   title:"Refreshable Braille Display with Adjustable Cell Size for Learners with Different Tactile Sensitivity",
+   authors:"MMH Saikot, KRI Sanim", venue:"IEEE Transactions on Haptics",
+   link:"https://doi.org/10.1109/TOH.2022.3184265", pdf:"assets/papers/saikot2022_toh.pdf",
+   bib:`@article{saikot2022refreshable,
+  title   = {Refreshable Braille Display with Adjustable Cell Size for Learners with Different Tactile Sensitivity},
+  author  = {Saikot, Mahmud Hasan and Sanim, Kazi Ragib Ishraq},
+  journal = {IEEE Transactions on Haptics},
+  year    = {2022},
+  doi     = {10.1109/TOH.2022.3184265}
+}`},
+  {type:"journal", year:"2022",
+   title:"Soft Multi-Directional Force Sensor for Underwater Robotic Application",
+   authors:"RASI Subad, MMH Saikot, K Park", venue:"Sensors, 22(10), 3850",
+   link:"https://doi.org/10.3390/s22103850", pdf:"assets/papers/subad2022_sensors.pdf",
+   bib:`@article{subad2022soft,
+  title   = {Soft Multi-Directional Force Sensor for Underwater Robotic Application},
+  author  = {Subad, Rafsan Al Shafatul Islam and Saikot, Mahmud Hasan and Park, Kihan},
+  journal = {Sensors},
+  volume  = {22},
+  number  = {10},
+  pages   = {3850},
+  year    = {2022},
+  doi     = {10.3390/s22103850}
+}`},
+  {type:"talk", year:"2026",
+   title:"Robophysics of a Tensegrity Robotic Fish: Effects of Stiffness, Control, and Elastic Recoil on Swimming Efficiency",
+   authors:"MH Saikot, A Leadbetter, B Cheng, J Zhao", venue:"APS Global Physics Summit",
+   link:"", pdf:"",
+   bib:`@misc{saikot2026robophysics,
+  title        = {Robophysics of a Tensegrity Robotic Fish: Effects of Stiffness, Control, and Elastic Recoil on Swimming Efficiency},
+  author       = {Saikot, Mahmud Hasan and Leadbetter, A. and Cheng, Bo and Zhao, Jianguo},
+  howpublished = {APS Global Physics Summit},
+  year         = {2026}
+}`},
+];
+const AWARDS = [
+  ["Best Paper Award, Modular Robot Workshop","IROS 2026 · TeCoBot","2026"],
+  ["Sam L. Clowney Research Scholarship","Colorado State University","2026"],
+  ["Raju Jairam Endowment","Colorado State University","2023"],
+  ["Champion, Energy Innovation Challenge","Singapore · $8,000","2018"],
+  ["1st Runner-Up, IEEE SS12 Innovation Challenge","Bangladesh Round","2018"],
+  ["Champion, Poster Presentation","Mechanical Festival, BUET","2018"],
+];
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const LABEL = {journal:"Journal", conference:"Conference", talk:"Talk"};
+
+const ICON = {
+  pdf:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M9 15h6M9 18h4"/></svg>',
+  cite:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 11H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5c0 2.5-1.5 4-4 5M19 11h-4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5c0 2.5-1.5 4-4 5"/></svg>',
+  arxiv:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 4l14 16M19 4 5 20"/></svg>',
+  play:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.4-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5Z"/></svg>',
+  code:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m8 7-5 5 5 5M16 7l5 5-5 5"/></svg>',
+  link:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M8 7h9v9"/></svg>'
+};
+const pubHref = p => p.link || `https://scholar.google.com/scholar?q=${encodeURIComponent('"'+p.title+'"')}`;
+function renderPubs(f){
+  document.getElementById('pubs').innerHTML = PUBS.map((p,i) => ({p,i})).filter(({p}) => f==='all' || p.type===f).map(({p,i}) => {
+    const l = [];
+    if (p.pdf)  l.push(`<a href="${esc(p.pdf)}" target="_blank" rel="noopener">${ICON.pdf}PDF</a>`);
+    if (p.arxiv) l.push(`<a href="${esc(p.arxiv)}" target="_blank" rel="noopener">${ICON.arxiv}arXiv</a>`);
+    if (p.type !== 'talk') l.push(`<button type="button" data-cite="${i}">${ICON.cite}Cite</button>`);
+    if (p.code) l.push(`<a href="${esc(p.code)}" target="_blank" rel="noopener">${ICON.code}Code</a>`);
+    if (p.play) l.push(`<a class="play" href="${esc(TECOBOT_PLAY)}" target="_blank" rel="noopener">${ICON.play}Play with TeCoBots</a>`);
+    const title = p.type === 'talk'
+      ? `<span class="t">${esc(p.title)}</span>`
+      : `<a class="t" href="${esc(pubHref(p))}" target="_blank" rel="noopener">${esc(p.title)}<span class="ext">${ICON.link}</span></a>`;
+    return `<article class="card pub${p.feat?' feat':''}">
+      <div>
+        ${p.feat?'<div class="star">★ Featured · accepted</div>':''}
+        ${title}
+        <div class="a">${esc(p.authors).replace(/(MMH Saikot|MH Saikot)/,'<b>$1</b>')}</div>
+        <div class="v"><i>${esc(p.venue)}</i></div>
+        ${l.length?`<div class="l">${l.join('')}</div>`:''}
+      </div>
+      <div class="side"><span class="type ${p.type}">${LABEL[p.type]}</span><span>${esc(p.year)}</span></div>
+    </article>`;
+  }).join('');
+}
+// keep the News link pointed at the same NMI link as the publication list
+document.getElementById('nmiNews').href = PUBS[0].link;
+
+// Cite dialog
+const citeDlg = document.getElementById('citeDlg'), citeTxt = document.getElementById('citeTxt'), copyBtn = document.getElementById('citeCopy');
+document.getElementById('pubs').addEventListener('click', e => {
+  const b = e.target.closest('[data-cite]'); if (!b) return;
+  citeTxt.textContent = PUBS[+b.dataset.cite].bib;
+  copyBtn.textContent = 'Copy BibTeX';
+  citeDlg.showModal();
+});
+copyBtn.onclick = async () => {
+  try { await navigator.clipboard.writeText(citeTxt.textContent); }
+  catch(e){ const r = document.createRange(); r.selectNodeContents(citeTxt); const s = getSelection(); s.removeAllRanges(); s.addRange(r); document.execCommand('copy'); }
+  copyBtn.textContent = 'Copied ✓';
+};
+document.getElementById('citeClose').onclick = () => citeDlg.close();
+citeDlg.addEventListener('click', e => { if (e.target === citeDlg) citeDlg.close(); });
+
+const filters = [['all','All'],['journal','Journal'],['conference','Conference'],['talk','Talks']];
+document.getElementById('filters').innerHTML = filters.map(([k,n]) =>
+  `<button data-f="${k}" aria-pressed="${k==='all'}">${n}<span class="count">${k==='all'?PUBS.length:PUBS.filter(p=>p.type===k).length}</span></button>`).join('');
+document.getElementById('filters').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  document.querySelectorAll('#filters button').forEach(x => x.setAttribute('aria-pressed', x===b));
+  renderPubs(b.dataset.f);
+});
+renderPubs('all');
+
+const trophy = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4ZM17 6h3v2a3 3 0 0 1-3 3M7 6H4v2a3 3 0 0 0 3 3"/></svg>';
+document.getElementById('awardList').innerHTML = AWARDS.map(([t,s,y]) =>
+  `<li><span class="ic">${trophy}</span><div><b>${esc(t)}</b><span>${esc(s)}</span></div><em>${y}</em></li>`).join('');
+
+document.getElementById('robotLink').href = TECOBOT_URL;
+
+/* ===== Keep the hero name on one line at any screen width ===== */
+const heroName = document.getElementById('heroName');
+function fitName(){
+  heroName.style.fontSize = '';
+  const avail = heroName.parentElement.clientWidth;
+  const need = heroName.scrollWidth;
+  if (need > avail) heroName.style.fontSize = (parseFloat(getComputedStyle(heroName).fontSize) * avail / need * 0.98) + 'px';
+}
+addEventListener('resize', fitName); fitName();
+if (document.fonts) document.fonts.ready.then(fitName);
+
+/* ===== Theme, nav, reveal ===== */
+const root = document.documentElement;
+if (!root.dataset.theme) root.dataset.theme = 'dark';
+document.getElementById('theme').onclick = () => {
+  root.dataset.theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
+  try { localStorage.setItem('theme', root.dataset.theme); } catch(e){}
+  document.dispatchEvent(new Event('themechange'));
+};
+const nav = document.getElementById('nav'), hero = document.querySelector('.hero');
+const onScroll = () => nav.classList.toggle('solid', window.scrollY > hero.offsetHeight - 70 || document.getElementById('menu').classList.contains('open'));
+addEventListener('scroll', onScroll, {passive:true}); onScroll();
+const menu = document.getElementById('menu');
+document.getElementById('menuBtn').onclick = () => { menu.classList.toggle('open'); onScroll(); };
+menu.addEventListener('click', e => { if (e.target.closest('.navlink')) { menu.classList.remove('open'); onScroll(); } });
+const navLinks = [...document.querySelectorAll('.navlink a[href^="#"]')];
+const secIO = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) navLinks.forEach(a => a.classList.toggle('active', a.hash === '#' + e.target.id));
+}), {rootMargin:'-45% 0px -50% 0px'});
+document.querySelectorAll('main section[id]').forEach(s => secIO.observe(s));
+const ro = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } }), {threshold:.08});
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ===== 6-bar icosahedron tensegrity (hero) =====
+   12 nodes on three orthogonal pairs of parallel struts:
+   struts along x at (y=0, z=±a), along y at (z=0, x=±a), along z at (x=0, y=±a).
+   a = 1/φ ≈ 0.618 gives the regular-icosahedron configuration; we let a "breathe"
+   to suggest the structure deforming under actuation. 24 cables, 6 struts.     */
+(function(){
+  const cv = document.getElementById('tensegrity'), ctx = cv.getContext('2d');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const L = 1;                      // strut half-length
+  const nodes = [], struts = [];
+  // build nodes: [axis, side(±a), end(±L)]
+  for (const axis of [0,1,2]) for (const s of [1,-1]) {
+    const i = nodes.length;
+    nodes.push({axis, s, e: 1}); nodes.push({axis, s, e:-1});
+    struts.push([i, i+1]);
+  }
+  function positions(a){
+    return nodes.map(({axis,s,e}) => {
+      const v = [0,0,0];
+      v[axis] = e*L;                // along strut
+      v[(axis+2)%3] = s*a;          // offset of parallel pair
+      return v;
+    });
+  }
+  // cables = icosahedron edges minus the 6 short edges joining parallel strut ends
+  const P0 = positions(1/1.6180339887);
+  const cables = [];
+  for (let i=0;i<12;i++) for (let j=i+1;j<12;j++) {
+    const d = Math.hypot(P0[i][0]-P0[j][0], P0[i][1]-P0[j][1], P0[i][2]-P0[j][2]);
+    const sameEnd = nodes[i].axis===nodes[j].axis && nodes[i].e===nodes[j].e;
+    if (Math.abs(d - 2*0.6180339887) < 1e-3 && !sameEnd) cables.push([i,j]);
+  }
+
+  let W=0, H=0, dpr=1, cx=0, cy=0, scale=1;
+  function resize(){
+    dpr = Math.min(devicePixelRatio||1, 2);
+    const r = cv.getBoundingClientRect(); W = r.width; H = r.height;
+    cv.width = W*dpr; cv.height = H*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+    cx = W*0.5; cy = H*0.43; scale = Math.min(W, H*0.86)*0.25;
+  }
+  new ResizeObserver(resize).observe(cv); resize();
+
+  // rotation state (matrix) + angular velocity from drag
+  let R = [[1,0,0],[0,1,0],[0,0,1]];
+  const mul = (A,B) => A.map(r => [0,1,2].map(j => r[0]*B[0][j]+r[1]*B[1][j]+r[2]*B[2][j]));
+  const rotX = t => [[1,0,0],[0,Math.cos(t),-Math.sin(t)],[0,Math.sin(t),Math.cos(t)]];
+  const rotY = t => [[Math.cos(t),0,Math.sin(t)],[0,1,0],[-Math.sin(t),0,Math.cos(t)]];
+  R = mul(rotX(0.5), mul(rotY(0.6), R));
+  let vx = 0.0016, vy = 0.0042, drag = null, mx = 0, my = 0, tx = 0, ty = 0;
+
+  cv.addEventListener('pointerdown', e => { drag = {x:e.clientX, y:e.clientY}; cv.setPointerCapture(e.pointerId); });
+  cv.addEventListener('pointermove', e => {
+    if (!drag) return;
+    const dx = e.clientX - drag.x, dy = e.clientY - drag.y; drag = {x:e.clientX, y:e.clientY};
+    vy = dx*0.0009; vx = dy*0.0009;
+    R = mul(rotX(dy*0.008), mul(rotY(dx*0.008), R));
+  });
+  const end = () => drag = null;
+  cv.addEventListener('pointerup', end); cv.addEventListener('pointercancel', end);
+  // hover-follow: track the pointer over the figure; ignore it while it's on the button
+  const stage = cv.parentElement;
+  stage.addEventListener('pointermove', e => {
+    if (e.target.closest('.robot-btn')) return;              // button hover leaves the figure where it is
+    const r = cv.getBoundingClientRect(); tx = (e.clientX - r.left)/r.width - .5; ty = (e.clientY - r.top)/r.height - .5;
+  });
+  stage.addEventListener('pointerleave', () => { tx = ty = 0; });
+
+  const mix = (a,b,t) => a + (b-a)*t;
+  // colours follow the site theme (dark hero in dark mode, light hero in light mode)
+  const PAL = {
+    dark:  {c1:[103,232,249], c2:[129,140,248], cMin:.25, cMax:.55, strutHi:255, strutLo:170, tint:12, outline:'rgba(10,14,28,1)',
+            node:'207,250,254', glow:'rgba(103,232,249,.9)', ring:'129,140,248', ringA:.05},
+    light: {c1:[8,145,178],   c2:[79,70,229],   cMin:.30, cMax:.55, strutHi:30,  strutLo:95,  tint:18, outline:'rgba(243,245,253,1)',
+            node:'79,70,229',   glow:'rgba(99,102,241,.55)', ring:'79,70,229',   ringA:.07}
+  };
+  let pal = PAL.dark, palTick = 0;
+  const readPal = () => { pal = PAL[getComputedStyle(document.documentElement).getPropertyValue('--hero-mode').trim()] || PAL.dark; };
+  readPal();
+  document.addEventListener('themechange', () => { readPal(); if (reduce) frame(0); });
+  function frame(t){
+    if (++palTick % 15 === 0) readPal();
+    // spin with gentle damping back to cruising speed
+    vx = mix(vx, 0.0016, 0.01); vy = mix(vy, 0.0042, 0.01);
+    mx = mix(mx, tx, 0.08); my = mix(my, ty, 0.08);    // ease toward the pointer, no jumps
+    if (!drag && !reduce) R = mul(rotX(vx), mul(rotY(vy), R));
+
+    const a = reduce ? 0.618 : 0.618 + 0.13*Math.sin(t/1400) + 0.04*Math.sin(t/530);
+    const P = positions(a).map(v => {
+      const x = R[0][0]*v[0]+R[0][1]*v[1]+R[0][2]*v[2];
+      const y = R[1][0]*v[0]+R[1][1]*v[1]+R[1][2]*v[2];
+      const z = R[2][0]*v[0]+R[2][1]*v[1]+R[2][2]*v[2];
+      const f = 4/(4 + z);         // perspective
+      return [cx + (x + mx*0.15)*scale*f, cy + (y + my*0.15)*scale*f, z, f];
+    });
+
+    // fade previous frame -> soft motion trails
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.fillStyle = reduce ? 'rgba(0,0,0,1)' : 'rgba(0,0,0,0.28)';
+    ctx.fillRect(0,0,W,H);
+    ctx.globalCompositeOperation = 'source-over';
+
+    // halo rings (abstract)
+    ctx.lineWidth = 1;
+    for (let k=1;k<=3;k++){
+      ctx.strokeStyle = `rgba(${pal.ring},${pal.ringA/k})`;
+      ctx.beginPath(); ctx.ellipse(cx, cy, scale*(1.45+k*0.32), scale*(1.45+k*0.32)*0.34, -0.35 + Math.sin(t/4000)*0.05, 0, Math.PI*2); ctx.stroke();
+    }
+
+    const segs = [];
+    cables.forEach(([i,j]) => segs.push({i,j,z:(P[i][2]+P[j][2])/2,k:'c'}));
+    struts.forEach(([i,j]) => segs.push({i,j,z:(P[i][2]+P[j][2])/2,k:'s'}));
+    segs.sort((A,B) => B.z - A.z);   // far first
+
+    for (const s of segs){
+      const A = P[s.i], B = P[s.j], depth = (1 - (s.z+1.2)/2.4);  // 0 far .. 1 near
+      if (s.k === 'c'){
+        const g = ctx.createLinearGradient(A[0],A[1],B[0],B[1]);
+        const al = pal.cMin + pal.cMax*depth;
+        g.addColorStop(0, `rgba(${pal.c1},${al})`);
+        g.addColorStop(1, `rgba(${pal.c2},${al})`);
+        ctx.strokeStyle = g; ctx.lineWidth = 1.1 + depth*0.6;
+        ctx.beginPath(); ctx.moveTo(A[0],A[1]); ctx.lineTo(B[0],B[1]); ctx.stroke();
+      } else {
+        ctx.lineCap = 'round';
+        ctx.strokeStyle = pal.outline; ctx.lineWidth = 9*((A[3]+B[3])/2);
+        ctx.beginPath(); ctx.moveTo(A[0],A[1]); ctx.lineTo(B[0],B[1]); ctx.stroke();
+        const g = ctx.createLinearGradient(A[0],A[1],B[0],B[1]);
+        const c = Math.round(pal.strutLo + (pal.strutHi - pal.strutLo)*depth);
+        g.addColorStop(0, `rgb(${c},${c+4},${Math.min(255,c+pal.tint)})`);
+        g.addColorStop(1, `rgb(${Math.max(0,c-25)},${Math.max(0,c-22)},${Math.min(255,c+pal.tint-8)})`);
+        ctx.strokeStyle = g; ctx.lineWidth = 6*((A[3]+B[3])/2);
+        ctx.beginPath(); ctx.moveTo(A[0],A[1]); ctx.lineTo(B[0],B[1]); ctx.stroke();
+      }
+    }
+    // nodes
+    for (const p of P){
+      const depth = 1 - (p[2]+1.2)/2.4;
+      ctx.shadowColor = pal.glow; ctx.shadowBlur = 12*depth;
+      ctx.fillStyle = `rgba(${pal.node},${0.5+0.5*depth})`;
+      ctx.beginPath(); ctx.arc(p[0],p[1], 3.2*p[3], 0, Math.PI*2); ctx.fill();
+    }
+    ctx.shadowBlur = 0;
+  }
+
+  let running = true, raf = 0;
+  const loop = t => { frame(t); if (running && !reduce) raf = requestAnimationFrame(loop); };
+  new IntersectionObserver(([e]) => {
+    running = e.isIntersecting;
+    if (running && !reduce) { cancelAnimationFrame(raf); raf = requestAnimationFrame(loop); }
+  }).observe(cv);
+  if (reduce) { frame(0); cv.addEventListener('pointermove', () => drag && frame(0)); }
+  else raf = requestAnimationFrame(loop);
+})();
+</script>
+</body>
+</html>
