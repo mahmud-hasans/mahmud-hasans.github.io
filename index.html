@@ -89,9 +89,9 @@ nav.solid button:hover{background:var(--bg-alt);color:var(--text)}
 #tensegrity{position:absolute;inset:0;width:100%;height:100%;cursor:grab;touch-action:pan-y}
 #tensegrity:active{cursor:grabbing}
 .stage-foot{position:absolute;left:0;right:0;bottom:17%;display:flex;justify-content:center;z-index:3}
-.robot-btn{display:inline-flex;align-items:center;gap:.55em;padding:.62em 1.1em;border-radius:999px;font-size:.92rem;font-weight:500;color:var(--hero-text);border:1px solid var(--hero-border);background:color-mix(in srgb,var(--hero-bg) 70%,transparent);backdrop-filter:blur(6px);transition:transform .15s,border-color .15s,box-shadow .15s}
-.robot-btn:hover{text-decoration:none;transform:translateY(-2px);border-color:var(--hero-kicker);box-shadow:0 8px 28px var(--hero-glow1)}
-.robot-btn svg{width:1.05em;height:1.05em;color:var(--hero-kdot)}
+.robot-btn{display:inline-flex;align-items:center;gap:.55em;padding:.68em 1.25em;border-radius:999px;font-size:.95rem;font-weight:600;color:var(--hero-bg);background:var(--hero-text);border:1px solid var(--hero-text);box-shadow:0 6px 24px var(--hero-glow1);transition:transform .15s,box-shadow .15s}
+.robot-btn:hover{text-decoration:none;transform:translateY(-2px);box-shadow:0 10px 32px var(--hero-glow1),0 0 0 4px color-mix(in srgb,var(--hero-text) 18%,transparent)}
+.robot-btn svg{width:1.05em;height:1.05em;color:currentColor}
 .fig-label{position:absolute;right:clamp(16px,3vw,32px);bottom:clamp(14px,2.4vw,26px);z-index:3;font-family:var(--mono);font-size:.7rem;color:var(--hero-faint);text-align:right;line-height:1.7;pointer-events:none}
 .hero .wrap{position:relative;z-index:2;pointer-events:none}
 .hero-text{width:50%;padding:clamp(96px,10vw,140px) 0 clamp(80px,8vw,120px);pointer-events:auto}
@@ -112,14 +112,22 @@ nav.solid button:hover{background:var(--bg-alt);color:var(--text)}
 .icons svg{width:1.1rem;height:1.1rem}
 .scroll-cue{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);z-index:2;width:22px;height:34px;border:1.5px solid var(--hero-border);border-radius:12px}
 .scroll-cue::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;margin-left:-1.5px;border-radius:2px;background:var(--hero-sub);animation:cue 1.8s infinite}
+.peek{position:fixed;left:50%;bottom:calc(14px + env(safe-area-inset-bottom));z-index:40;transform:translateX(-50%);display:none;align-items:center;gap:6px;
+  padding:7px 14px 7px 12px;border-radius:999px;font-size:.78rem;font-weight:600;color:var(--hero-bg);background:var(--hero-text);
+  box-shadow:0 6px 22px rgba(0,0,0,.28);border:0;cursor:pointer;opacity:0;transition:opacity .3s}
+.peek svg{width:15px;height:15px}
+.peek.show{opacity:1;animation:nudge 1.6s ease-in-out infinite}
+@keyframes nudge{0%,100%{transform:translateX(-50%) translateY(0)}20%{transform:translateX(-50%) translateY(5px)}40%{transform:translateX(-50%) translateY(0)}55%{transform:translateX(-50%) translateY(3px)}70%{transform:translateX(-50%) translateY(0)}}
+@media (max-width:860px){.peek{display:inline-flex}}
+@media (prefers-reduced-motion:reduce){.peek.show{animation:none}}
 @keyframes cue{0%{opacity:0;transform:translateY(0)}30%{opacity:1}100%{opacity:0;transform:translateY(10px)}}
 @media (max-width:860px){
   .hero{flex-direction:column;align-items:stretch;min-height:0}
-  .hero-text{width:100%;padding:96px 0 0}
+  .hero-text{width:100%;padding:72px 0 0}
   .hero h1{font-size:clamp(24px,8.2vw,64px)}
-  .stage{position:relative;order:2;width:100%;height:min(110vw,480px);right:auto}
-  .stage-foot{bottom:14%}
-  .fig-label{left:0;right:0;text-align:center;bottom:4%}
+  .stage{position:relative;order:2;width:100%;height:min(102vw,460px);right:auto;margin-top:-30px}
+  .stage-foot{bottom:16%}
+  .fig-label{left:0;right:0;text-align:center;bottom:3%}
   .kicker{font-size:.7rem;letter-spacing:.05em}
   .scroll-cue{display:none}
 }
@@ -306,6 +314,9 @@ a.t:hover .ext svg{opacity:1}
     </div>
   </div>
   <a class="scroll-cue" href="#about" aria-label="Scroll to content"></a>
+  <button class="peek" id="peek" type="button" aria-label="Scroll to see the robot">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>Scroll
+  </button>
 </header>
 
 <main>
@@ -683,6 +694,19 @@ function fitName(){
 }
 addEventListener('resize', fitName); fitName();
 if (document.fonts) document.fonts.ready.then(fitName);
+
+/* ===== Mobile: nudge to scroll when "Meet a cool robot" is below the fold ===== */
+(function(){
+  const peek = document.getElementById('peek'), btn = document.getElementById('robotLink');
+  let seen = false;
+  const io = new IntersectionObserver(([e]) => {
+    if (e.isIntersecting) seen = true;                      // once they've seen it, stop nudging
+    peek.classList.toggle('show', !e.isIntersecting && !seen && scrollY < 40);
+  }, {threshold: 0.9});
+  io.observe(btn);
+  addEventListener('scroll', () => { if (scrollY >= 40) peek.classList.remove('show'); }, {passive:true});
+  peek.onclick = () => btn.scrollIntoView({behavior:'smooth', block:'center'});
+})();
 
 /* ===== Theme, nav, reveal ===== */
 const root = document.documentElement;
