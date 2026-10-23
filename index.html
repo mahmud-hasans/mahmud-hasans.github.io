@@ -69,14 +69,18 @@ nav.solid .name{color:var(--text)}
 nav.solid ul a,nav.solid button{color:var(--muted)}
 nav.solid ul a:hover,nav.solid ul a.active{color:var(--text)}
 nav.solid button:hover{background:var(--bg-alt);color:var(--text)}
+.nav-right{display:flex;align-items:center;gap:clamp(14px,2vw,28px)}
+.ctls{display:flex;align-items:center;gap:4px}
+@media (min-width:761px){.ctls{margin-right:clamp(14px,2vw,28px)}}  /* keeps desktop nav exactly where it was */
 #menuBtn{display:none}
+#menuBtn .i-close{display:none}
+#menuBtn[aria-expanded="true"] .i-open{display:none}
+#menuBtn[aria-expanded="true"] .i-close{display:block}
 @media (max-width:760px){
   #menuBtn{display:grid}
-  nav ul .navlink{display:none}
-  nav ul.open{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:6px 0}
-  nav ul.open .navlink{display:block}
+  nav ul{display:none}
+  nav ul.open{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:6px 0;box-shadow:0 12px 24px rgba(0,0,0,.18)}
   nav ul.open .navlink a{display:block;padding:12px 24px;color:var(--text)}
-  nav ul.open li.ctl{display:none}
 }
 
 /* ---------- Hero ---------- */
@@ -269,15 +273,19 @@ a.t:hover .ext svg{opacity:1}
 <nav id="nav">
   <div class="wrap">
     <a class="name" href="#top">Mahmud Hasan Saikot</a>
+    <div class="nav-right">
     <ul id="menu">
       <li class="navlink"><a href="#about">About</a></li>
       <li class="navlink"><a href="#research">Research</a></li>
       <li class="navlink"><a href="#publications">Publications</a></li>
       <li class="navlink"><a href="#experience">Experience</a></li>
       <li class="navlink"><a href="assets/Mahmud_Hasan_Saikot_CV.pdf" target="_blank" rel="noopener">CV</a></li>
-      <li class="ctl"><button id="theme" aria-label="Toggle dark mode" title="Toggle theme"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button></li>
-      <li class="ctl"><button id="menuBtn" aria-label="Menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button></li>
     </ul>
+    <div class="ctls">
+      <button id="theme" aria-label="Toggle dark mode" title="Toggle theme"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+      <button id="menuBtn" aria-label="Menu" aria-expanded="false"><svg class="i-open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg><svg class="i-close" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    </div>
   </div>
 </nav>
 
@@ -720,8 +728,17 @@ const nav = document.getElementById('nav'), hero = document.querySelector('.hero
 const onScroll = () => nav.classList.toggle('solid', window.scrollY > hero.offsetHeight - 70 || document.getElementById('menu').classList.contains('open'));
 addEventListener('scroll', onScroll, {passive:true}); onScroll();
 const menu = document.getElementById('menu');
-document.getElementById('menuBtn').onclick = () => { menu.classList.toggle('open'); onScroll(); };
-menu.addEventListener('click', e => { if (e.target.closest('.navlink')) { menu.classList.remove('open'); onScroll(); } });
+const menuBtn = document.getElementById('menuBtn');
+const setMenu = open => { menu.classList.toggle('open', open); menuBtn.setAttribute('aria-expanded', open); onScroll(); };
+menuBtn.onclick = () => setMenu(!menu.classList.contains('open'));
+menu.addEventListener('click', e => { if (e.target.closest('.navlink')) setMenu(false); });
+// close the mobile menu on a tap/click anywhere outside it, on Escape, or when scrolling away
+const closeMenu = () => { if (menu.classList.contains('open')) setMenu(false); };
+document.addEventListener('pointerdown', e => { if (!e.target.closest('#menu, .ctls')) closeMenu(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });
+let menuScrollY = 0;
+document.getElementById('menuBtn').addEventListener('click', () => { menuScrollY = scrollY; });
+addEventListener('scroll', () => { if (Math.abs(scrollY - menuScrollY) > 80) closeMenu(); }, {passive:true});
 const navLinks = [...document.querySelectorAll('.navlink a[href^="#"]')];
 const secIO = new IntersectionObserver(es => es.forEach(e => {
   if (e.isIntersecting) navLinks.forEach(a => a.classList.toggle('active', a.hash === '#' + e.target.id));
@@ -885,5 +902,9 @@ document.getElementById('yr').textContent = new Date().getFullYear();
   else raf = requestAnimationFrame(loop);
 })();
 </script>
+<!-- GoatCounter: cookie-free analytics. Stats at https://saikath65.goatcounter.com
+     To stop counting your own visits, open https://mahmud-hasans.github.io/#toggle-goatcounter once per browser. -->
+<script data-goatcounter="https://saikath65.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
